@@ -18,18 +18,6 @@ export default [
         image: require('@/assets/images/fortnite.png')
     },
     {
-        name: 'Need for Speed Payback',
-        types: ['Racing', 'Action', 'Open World' ],
-        price: 5.99,
-        image: require('@/assets/images/nfs-payback.png')
-    },
-    {
-        name: 'Fortnite',
-        types: ['Action', 'Multiplayer', 'Battle Royal'],
-        price: 1,
-        image: require('@/assets/images/fortnite.png')
-    },
-    {
         name: 'GTA V',
         types: ['Action', 'Adventure', 'Open World'],
         price: 14.99,

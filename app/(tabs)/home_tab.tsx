@@ -10,12 +10,12 @@ export default function Page() {
   const [searchTerm, setSearchTerm] = useState(1);
 
   return (
-    <ScrollView>
-      <View className='w-full h-full pt-10'>
-        <LinearGradient
-          colors={['#020202', '#560101']}
-          style={styles.background}
-        />
+    <View className='w-full h-full'>
+      <LinearGradient
+        colors={['#020202', '#560101']}
+        style={styles.background}
+      />
+      <ScrollView className='w-full h-screen pt-10'>
         <View className='w-full flex-row justify-between px-5'>
           <Image source={require('@/assets/images/icon.png')} />
           <Image source={require('@/assets/images/search.png')} />
@@ -50,8 +50,8 @@ export default function Page() {
           }
 
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   )
 }
 
