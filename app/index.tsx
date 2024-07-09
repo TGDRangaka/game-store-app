@@ -4,21 +4,33 @@ import Login from '@/screens/Login';
 import Register from '@/screens/Register';
 import Loading from '@/screens/Loading';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 
 export default function index() {
+  const router = useRouter();
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isLoginScreen, setIsLoginScreen] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (isLoggedIn) {
+        router.push('/home_tab');
+        setIsLoading(false);
+      }
+    }, 100);
+
+  }, [])
 
   return (
     isLoading
       ? <Loading />
-      : <View className='flex-1 justify-center items-center from-[#020202] to-[#560101] px-5'>
-      <LinearGradient
-        colors={['#020202', '#560101']}
-        style={styles.background}
-      />
+      : <View className='flex-1 justify-center items-center px-5'>
+        <LinearGradient
+          colors={['#020202', '#560101']}
+          style={styles.background}
+        />
         {
           isLoginScreen ?
             <Login setIsLoginScreen={setIsLoginScreen} />

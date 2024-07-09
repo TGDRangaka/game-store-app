@@ -7,7 +7,7 @@ export default function RegisterForm() {
     const router = useRouter();
 
     const handleRegister = () => {
-        router.push('/profile')
+        router.push('/home_tab')
     }
     return (
         <View className='w-full items-center flex-grow mt-20'>
