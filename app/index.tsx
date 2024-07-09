@@ -10,7 +10,7 @@ export default function index() {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoginScreen, setIsLoginScreen] = useState(true);
 
   useEffect(() => {
@@ -19,7 +19,8 @@ export default function index() {
         router.push('/home_tab');
         setIsLoading(false);
       }
-    }, 100);
+      setIsLoading(false);
+    }, 500);
 
   }, [])
 

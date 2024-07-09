@@ -1,20 +1,20 @@
 export default [
     {
         id: "1",
-        name: "Game 1",
+        name: "God of War",
         price: 19.99,
         image: require('@/assets/images/god-of-war.png')
     },
     {
         id: "2",
-        name: "Game 2",
-        price: 14.99,
-        image: require('@/assets/images/god-of-war.png')
+        name: "Assassins Creed Valhalla",
+        price: 3.99,
+        image: require('@/assets/images/assasing-creed-valhalla.png')
     },
     {
         id: "3",
-        name: "Game 3",
-        price: 12.99,
-        image: require('@/assets/images/god-of-war.png')
+        name: "FIFA 23",
+        price: 1,
+        image: require('@/assets/images/fifa.png')
     }
 ]

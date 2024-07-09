@@ -5,17 +5,10 @@ module.exports = {
     extend: {
       colors: {
         white: '#FFFFFF',
-        black: '#020202',
-        red: '#560101',
       },
       textColor: {
         DEFAULT: '#FFFFFF',
-      },
-      gradientColorStops: theme => ({
-        ...theme('colors'),
-        'black': '#020202',
-        'red': '#560101',
-      }),
+      }
     },
   },
   plugins: [],

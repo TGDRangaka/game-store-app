@@ -44,7 +44,7 @@ export default function Page() {
 
         </View>
 
-        <View className='mx-5 mt-5'>
+        <View className='mx-5 mt-5 mb-10'>
           {
             gamesData.map((game, i) => <GameCard key={i} game={game} />)
           }

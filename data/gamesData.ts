@@ -22,5 +22,17 @@ export default [
         types: ['Action', 'Adventure', 'Open World'],
         price: 14.99,
         image: require('@/assets/images/gta-v.png')
+    },
+    {
+        name: 'Red Dead Redemption II',
+        types: ['Action', 'Open World', 'Adventure'],
+        price: 21.99,
+        image: require('@/assets/images/rdr-ii.png')
+    },
+    {
+        name: 'Wukong Black Myth',
+        types: ['Role Playing', 'Adventure', 'Open World'],
+        price: 35.99,
+        image: require('@/assets/images/wukong-black-myth.png')
     }
 ]
