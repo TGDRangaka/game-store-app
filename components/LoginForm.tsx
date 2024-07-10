@@ -12,10 +12,10 @@ export default function LoginForm() {
     return (
         <View className='items-center'>
             <View className='w-full'>
-                <ThemedText className='text-sm'>Email</ThemedText>
+                <ThemedText className='text-white text-sm'>Email</ThemedText>
                 <TextInput className='text-white border-b border-gray-500 h-10 text-lg font-bold' />
 
-                <ThemedText className='mt-5 text-sm'>Password</ThemedText>
+                <ThemedText className='text-white mt-5 text-sm'>Password</ThemedText>
                 <TextInput className='text-white border-b border-gray-500 h-10 text-lg font-bold' />
             </View>
 

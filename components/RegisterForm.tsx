@@ -12,19 +12,19 @@ export default function RegisterForm() {
     return (
         <View className='w-full items-center flex-grow mt-20'>
             <View className='w-full'>
-                <ThemedText className='text-sm'>Username</ThemedText>
+                <ThemedText className='text-white text-sm'>Username</ThemedText>
                 <TextInput className='text-white border-b border-gray-500 h-10 text-lg font-bold' placeholder='shadow_gamer'/>
 
-                <ThemedText className='mt-5 text-sm'>Email</ThemedText>
+                <ThemedText className='text-white mt-5 text-sm'>Email</ThemedText>
                 <TextInput className='text-white border-b border-gray-500 h-10 text-lg font-bold' />
 
-                <ThemedText className='mt-5 text-sm'>Password</ThemedText>
+                <ThemedText className='text-white mt-5 text-sm'>Password</ThemedText>
                 <TextInput className='text-white border-b border-gray-500 h-10 text-lg font-bold' />
 
-                <ThemedText className='mt-5 text-sm'>Confirm Password</ThemedText>
+                <ThemedText className='text-white mt-5 text-sm'>Confirm Password</ThemedText>
                 <TextInput className='text-white border-b border-gray-500 h-10 text-lg font-bold' />
 
-                <ThemedText className='mt-5 text-sm'>Date of Birth</ThemedText>
+                <ThemedText className='text-white mt-5 text-sm'>Date of Birth</ThemedText>
                 <TextInput className='text-white border-b border-gray-500 h-10 text-lg font-bold' />
             </View>
 
