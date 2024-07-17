@@ -16,7 +16,7 @@ export default function index() {
   useEffect(() => {
     setTimeout(() => {
       if (isLoggedIn) {
-        router.push('/search');
+        router.push('/profile');
       }
       setIsLoading(false);
     }, 1000);

@@ -10,7 +10,7 @@ export default function _layout() {
       headerShown: false,
       tabBarActiveBackgroundColor: '#1f1f1f',
       tabBarInactiveBackgroundColor: '#1f1f1f',
-      tabBarShowLabel: true,
+      tabBarShowLabel: false,
       tabBarActiveTintColor: '#1f1f1f',
       tabBarLabelStyle: { fontSize: 12, color: 'white' },
       tabBarLabelPosition: 'below-icon',
