@@ -19,18 +19,18 @@ export default function index() {
         router.push('/(tabs)');
       }
       setIsLoading(false);
-    }, 500);
+    }, 1000);
 
   }, [])
 
   return (
     isLoading
       ? <Loading />
-      : <View className='flex-1 justify-center items-center px-5'>
-        <LinearGradient
+      : <View className='flex-1 justify-center items-center px-5 bg-background'>
+        {/* <LinearGradient
           colors={['#020202', '#560101']}
           style={styles.background}
-        />
+        /> */}
         {
           isLoginScreen ?
             <Login setIsLoginScreen={setIsLoginScreen} />

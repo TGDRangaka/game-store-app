@@ -8,10 +8,15 @@ export default function _layout() {
     <Tabs
     screenOptions={{
       headerShown: false,
-      tabBarActiveBackgroundColor: '#560101',
-      tabBarInactiveBackgroundColor: '#560101',
-      tabBarShowLabel: false,
-      tabBarActiveTintColor: 'red'
+      tabBarActiveBackgroundColor: '#1f1f1f',
+      tabBarInactiveBackgroundColor: '#1f1f1f',
+      tabBarShowLabel: true,
+      tabBarActiveTintColor: '#1f1f1f',
+      tabBarLabelStyle: { fontSize: 12, color: 'white' },
+      tabBarLabelPosition: 'below-icon',
+      // tabBarStyle: { backgroundColor: '#1f1f1f', height: 50 },
+      tabBarItemStyle: { paddingVertical: 5 },
+      tabBarIconStyle: { marginBottom: 5}
     }}
     >
         <Tabs.Screen name='index' options={{

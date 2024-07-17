@@ -6,7 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 export default function SlideGameCard({ item }: any) {
     const { width } = useWindowDimensions();
     return (
-        <View className='border w-full border-gray-500 mt-5 aspect-video rounded-2xl justify-end overflow-hidden relative'>
+        <View className='border w-full border-gray-500 aspect-video rounded-2xl justify-end overflow-hidden relative'>
             <Image source={item.image} className='absolute w-full h-full' />
             <LinearGradient colors={['transparent', 'transparent', 'black']} className='absolute w-full h-full'></LinearGradient>
             <ThemedText className='text-white ml-6 text-lg font-bold mb-2'>{item.name}</ThemedText>

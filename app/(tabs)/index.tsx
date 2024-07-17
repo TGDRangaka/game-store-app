@@ -7,63 +7,62 @@ import GameCard from '@/components/GameCard';
 import axios from 'axios';
 import { Game } from '@/models/Game';
 import Loading from '@/screens/Loading';
+import { Link, useNavigation, useRouter } from 'expo-router';
+import { AntDesign } from '@expo/vector-icons';
 
 export default function Page() {
   const [searchTerm, setSearchTerm] = useState(1);
   const [gamesList, setGamesList] = useState<Game[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [newGames, setNewGames] = useState<Game[]>([]);
+
+  const router = useRouter();
+  const navigation = useNavigation();
 
   const getGamesList = async () => {
     try {
       const response = await axios.get('https://www.freetogame.com/api/games?platform=pc');
       if (response.status === 200) {
-        setGamesList(response.data.slice(0, 30));
+        setGamesList(response.data.slice(0, 40));
+        console.log(response.data.length);
       }
 
-      setIsLoading(false);
+    } catch (err) {
+      console.log('Error:', err);
+    }
+  }
+
+  const getNewlyReleasedGamesList = async () => {
+    try {
+      const response = await axios.get('https://www.freetogame.com/api/games?sort-by=release-date');
+      if (response.status === 200) {
+        setNewGames(response.data.slice(0, 4));
+      }
     } catch (err) {
       console.log('Error:', err);
     }
   }
 
   useEffect(() => {
-    getGamesList();
+    const loadData = async () => {
+      await getGamesList();
+      await getNewlyReleasedGamesList();
+      setIsLoading(false);
+    }
+    loadData();
+
   }, []);
 
   return (
-    <SafeAreaView className='flex-1'>
-      <LinearGradient
-        colors={['#020202', '#560101']}
-        style={styles.background}
-      />
+    <SafeAreaView className='flex-1 bg-background'>
       <View className='flex-1'>
-        <View className='w-full flex-row justify-between px-5'>
-          <Image source={require('@/assets/images/icon.png')} />
-          <Image source={require('@/assets/images/search.png')} />
+        <View className='w-full flex-row justify-between px-5 mt-7'>
+          {/* <Image className='w-14 aspect-square' source={require('@/assets/images/welcome-gif.gif')} /> */}
+          {/* <Image source={require('@/assets/images/search.png')} /> */}
         </View>
 
+        <ThemedText className='text-2xl ml-5 mb-2'>New Games</ThemedText>
         <HomeCardSlider />
-
-        {/* <View className='flex-row justify-around px-5 mt-8'>
-          <TouchableOpacity
-            onPress={() => { setSearchTerm(1) }}
-          >
-            <ThemedText className={searchTerm == 1 ? 'text-white' : 'text-white/50'}>Top Selling</ThemedText>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => { setSearchTerm(2) }}
-          >
-            <ThemedText className={searchTerm == 2 ? 'text-white' : 'text-white/50'}>Free to Play</ThemedText>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => { setSearchTerm(3) }}
-          >
-            <ThemedText className={searchTerm == 3 ? 'text-white' : 'text-white/50'}>Top Trending</ThemedText>
-          </TouchableOpacity>
-
-        </View> */}
 
         {isLoading
           ? (
@@ -71,11 +70,17 @@ export default function Page() {
           )
           : (
             <ScrollView className='w-full flex-grow'>
+              <View className='flex-row justify-between items-end mx-5 mt-3'>
+                <ThemedText className='text-2xl'>Trending Games</ThemedText>
+                <TouchableOpacity className='flex-row justify-center items-center bg-gray-600 rounded-lg px-3 py-2' onPress={() => router.push('/sort/all')}>
+                  <ThemedText className=''>See all  <AntDesign name="right" size={14} color='white' /></ThemedText>
+                </TouchableOpacity>
+              </View>
+
               <View className='mx-5 mt-5'>
                 {
                   gamesList.map((game, i) => <GameCard key={i} game={game} />)
                 }
-
               </View>
             </ScrollView>
           )}

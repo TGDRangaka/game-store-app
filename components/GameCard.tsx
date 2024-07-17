@@ -15,19 +15,19 @@ export default function GameCard({ game }: Props) {
     const router = useRouter();
 
     const handleCardPress = () => {
-        router.push(`/games/${game.id}`)
+        router.push(`/id/${game.id}`)
     }
     return (
         <GestureHandlerRootView>
             <TouchableOpacity className='flex-row items-center mb-8' onPress={handleCardPress}>
-                <Image className='aspect-square w-20 rounded-xl' source={{ uri: game.thumbnail }} />
+                <Image className='aspect-video h-16 rounded-sm' source={{ uri: game.thumbnail }} />
                 <View className='flex justify-center flex-grow mx-3 my-1'>
-                    <ThemedText className='text-white text-lg'>{game.title}</ThemedText>
-                    <ThemedText className='text-sm text-white/60 flex-grow'>{game.genre}</ThemedText>
+                    <ThemedText className='text-white text-xl font-bold'>{game.title}</ThemedText>
                     <ThemedText className='text-sm text-white flex-grow'>
                         <AntDesign name='edit' />
                         {'  ' + game.publisher}
                     </ThemedText>
+                    <ThemedText className='text-sm text-white/60'>{game.genre}</ThemedText>
                 </View>
             </TouchableOpacity>
         </GestureHandlerRootView>

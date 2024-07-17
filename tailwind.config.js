@@ -5,11 +5,13 @@ module.exports = {
     extend: {
       colors: {
         white: '#FFFFFF',
+        background: '#1f1f1f'
       },
       textColor: {
         DEFAULT: '#FFFFFF',
       }
     },
+
   },
   plugins: [],
 }

@@ -1,16 +1,13 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient';
+import { ThemedView } from '@/components/ThemedView';
 
 export default function Page() {
   return (
-    <View className='w-full h-full'>
-    <LinearGradient
-      colors={['#020202', '#560101']}
-      style={styles.background}
-    />
+    <ThemedView className='w-full h-full'>
       <Text className='text-red-600'>Home Page</Text>
-    </View>
+    </ThemedView>
   )
 }
 
