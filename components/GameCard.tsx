@@ -4,25 +4,33 @@ import { ThemedText } from './ThemedText'
 import { TabBarIcon } from './navigation/TabBarIcon'
 import { AntDesign } from '@expo/vector-icons';
 import { Link, useRouter } from 'expo-router';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { GestureHandlerRootView, TouchableOpacity } from 'react-native-gesture-handler';
+import { Game } from '@/models/Game';
 
-export default function GameCard({ game }: any) {
+interface Props {
+    game: Game;
+}
+
+export default function GameCard({ game }: Props) {
     const router = useRouter();
 
     const handleCardPress = () => {
         router.push(`/games/${game.id}`)
     }
     return (
-        <View className='flex-row items-center mb-8'>
-            <Image className='aspect-square w-20 rounded-xl' source={game.image} />
-            <View className='flex justify-center flex-grow mx-3 my-1'>
-                <ThemedText className='text-white text-lg'>{game.name}</ThemedText>
-                <ThemedText className='text-sm text-white/60 flex-grow'>{game.types.join(' - ')}</ThemedText>
-                <ThemedText className='text-2xl font-bold text-white'>${game.price}</ThemedText>
-            </View>
-            {/* <TouchableOpacity onPress={handleCardPress}> <Text>OO</Text></TouchableOpacity> */}
-            <Link href={`games/${game.id}`}><AntDesign name="rightcircleo" size={24} color='white' /></Link>
-                {/* <AntDesign name="rightcircleo" size={24} color='white' /> */}
-        </View>
+        <GestureHandlerRootView>
+            <TouchableOpacity className='flex-row items-center mb-8' onPress={handleCardPress}>
+                <Image className='aspect-square w-20 rounded-xl' source={{ uri: game.thumbnail }} />
+                <View className='flex justify-center flex-grow mx-3 my-1'>
+                    <ThemedText className='text-white text-lg'>{game.title}</ThemedText>
+                    <ThemedText className='text-sm text-white/60 flex-grow'>{game.genre}</ThemedText>
+                    <ThemedText className='text-sm text-white flex-grow'>
+                        <AntDesign name='edit' />
+                        {'  ' + game.publisher}
+                    </ThemedText>
+                </View>
+            </TouchableOpacity>
+        </GestureHandlerRootView>
+
     )
 }

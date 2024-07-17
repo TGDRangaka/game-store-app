@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ActivityIndicator, StyleSheet, Text } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, Text, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Loading() {
@@ -9,8 +9,9 @@ export default function Loading() {
         colors={['#020202', '#560101']}
         style={styles.background}
       />
-      <ActivityIndicator size="large" color="#FFFFFF" />
-      <Text style={styles.text}>Loading...</Text>
+      {/* <ActivityIndicator size="large" color="#FFFFFF" /> */}
+      <Image className='w-24 h-24' source={require('@/assets/images/loading.gif')} />
+      {/* <Text style={styles.text}>Loading...</Text> */}
     </View>
   );
 }
