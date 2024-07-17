@@ -26,7 +26,6 @@ export default function RootLayout() {
     }}
     >
       <Stack.Screen name='index' options={{title: 'index'}}/>
-      <Stack.Screen name='auth/index' options={{title: 'Login'}}/>
       <Stack.Screen name='(tabs)' options={{title: 'Tabs', headerShown: false}}/>
     </Stack>
   )

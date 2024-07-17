@@ -14,7 +14,7 @@ export default function _layout() {
       tabBarActiveTintColor: 'red'
     }}
     >
-        <Tabs.Screen name='home_tab' options={{
+        <Tabs.Screen name='index' options={{
           title: 'Home', 
           tabBarIcon: ({color, focused}) => (
             <TabBarIcon name={focused ? 'home' : 'home-outline'} color={focused ? 'white' : 'grey'} />

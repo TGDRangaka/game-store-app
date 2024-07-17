@@ -7,7 +7,7 @@ export default function LoginForm() {
     const router = useRouter();
 
     const handleLogin = () => {
-        router.push('/home_tab')
+        router.push('/(tabs)')
     }
     return (
         <View className='items-center'>

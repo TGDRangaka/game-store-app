@@ -16,8 +16,7 @@ export default function index() {
   useEffect(() => {
     setTimeout(() => {
       if (isLoggedIn) {
-        router.push('/home_tab');
-        setIsLoading(false);
+        router.push('/(tabs)');
       }
       setIsLoading(false);
     }, 500);
