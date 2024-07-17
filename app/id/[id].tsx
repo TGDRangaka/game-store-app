@@ -6,11 +6,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { ThemedText } from '@/components/ThemedText';
 import axios from 'axios';
 import { GameData } from '@/models/GameData';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, EvilIcons, Ionicons } from '@expo/vector-icons';
 import GameRequirement from '@/components/game-screen/GameRequirement';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const SMALL_CARD_STYLES = 'w-20 py-4 bg-zinc-700 rounded-md justify-center items-center';
+const SMALL_CARD_STYLES = 'w-24 py-6 bg-zinc-700 rounded-md justify-center items-center';
 
 export default function Page() {
     const { id } = useLocalSearchParams();
@@ -54,26 +54,26 @@ export default function Page() {
                         <LinearGradient colors={['transparent', 'transparent', '#1f1f1f']} className='absolute w-full h-full'></LinearGradient>
 
                         <View className='absolute left-5 -bottom-14 flex-row items-end gap-2'>
-                            <Image className='aspect-square w-20' source={{ uri: game.thumbnail }} />
-                            <ThemedText className='rounded-lg -bottom-2 text-3xl w-64 mb-3'>{game.title}</ThemedText>
+                            <Image className='aspect-video h-20' source={{ uri: game.thumbnail }} />
+                            <ThemedText className='rounded-lg -bottom-2 text-2xl w-64 mb-3'>{game.title}</ThemedText>
                         </View>
                     </View>
 
                     <View className='px-5 mt-20'>
                         <View className='flex-row justify-center gap-5'>
                             <View className={SMALL_CARD_STYLES}>
-                                <AntDesign color={'#FF4242'} name='star' size={24}></AntDesign>
-                                <ThemedText className='font-bold'>Ratings</ThemedText>
-                                <ThemedText>{(Math.random() * 1 + 4).toFixed(1)} stars</ThemedText>
+                                <Ionicons color={'#FF4242'} name='star' size={28}/>
+                                <ThemedText className='font-bold text-lg'>Ratings</ThemedText>
+                                <ThemedText>4.7 stars</ThemedText>
                             </View>
                             <View className={SMALL_CARD_STYLES}>
-                                <AntDesign color={'#FF4242'} name='user' size={24}></AntDesign>
-                                <ThemedText className='font-bold'>Downloads</ThemedText>
-                                <ThemedText>{(Math.random() * 10 + 1).toFixed(0)} mil</ThemedText>
+                                <Ionicons color={'#FF4242'} name='download' size={28}/>
+                                <ThemedText className='font-bold text-lg'>Downloads</ThemedText>
+                                <ThemedText>8 millions</ThemedText>
                             </View>
                             <View className={SMALL_CARD_STYLES}>
-                                <AntDesign color={'#FF4242'} name='tag' size={24}></AntDesign>
-                                <ThemedText className='font-bold'>Category</ThemedText>
+                                <Ionicons color={'#FF4242'} name='dice' size={28}/>
+                                <ThemedText className='font-bold text-lg'>Category</ThemedText>
                                 <ThemedText>{game.genre}</ThemedText>
                             </View>
                         </View>
@@ -82,7 +82,7 @@ export default function Page() {
                             <TouchableOpacity className='flex-grow mr-3'>
                                 <ThemedText className='rounded-lg bg-red-500 py-2 text-2xl text-white text-center'>Download</ThemedText>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={handleFavorite}><AntDesign name='heart' size={40} color={isFavorites ? 'red' : 'white'} /></TouchableOpacity>
+                            <TouchableOpacity onPress={handleFavorite}><Ionicons name='heart' size={48} color={isFavorites ? 'red' : 'white'} /></TouchableOpacity>
                         </View>
 
 

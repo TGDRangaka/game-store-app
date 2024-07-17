@@ -37,7 +37,7 @@ export default function Page() {
     try {
       const response = await axios.get('https://www.freetogame.com/api/games?sort-by=release-date');
       if (response.status === 200) {
-        setNewGames(response.data.slice(0, 4));
+        setNewGames(response.data.slice(0, 8));
       }
     } catch (err) {
       console.log('Error:', err);
