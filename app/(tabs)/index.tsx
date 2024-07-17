@@ -68,11 +68,11 @@ export default function Page() {
               {/* <Image source={require('@/assets/images/search.png')} /> */}
             </View>
 
-            <ThemedText className='text-2xl ml-5 mb-2'>New Games</ThemedText>
+            <ThemedText className='text-2xl ml-5 mb-2' style={{ fontFamily: 'Audiowide' }}>New Games</ThemedText>
             <HomeCardSlider newGames={newGames} />
             <ScrollView className='w-full flex-grow'>
               <View className='flex-row justify-between items-end mx-5 mt-3'>
-                <ThemedText className='text-2xl'>Trending Games</ThemedText>
+                <ThemedText className='text-2xl' style={{ fontFamily: 'Audiowide' }}>Trending Games</ThemedText>
                 <TouchableOpacity className='flex-row justify-center items-center bg-gray-600 rounded-lg px-3 py-2' onPress={() => router.push('/sort/all')}>
                   <ThemedText className=''>See all  <AntDesign name="right" size={14} color='white' /></ThemedText>
                 </TouchableOpacity>

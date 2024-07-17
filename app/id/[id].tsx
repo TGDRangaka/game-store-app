@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, useWindowDimensions, ToastAndroid } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, useWindowDimensions, ToastAndroid, Linking } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { useLocalSearchParams } from 'expo-router';
+import { Link, useLocalSearchParams } from 'expo-router';
 import Loading from '@/screens/Loading';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ThemedText } from '@/components/ThemedText';
@@ -9,6 +9,7 @@ import { GameData } from '@/models/GameData';
 import { AntDesign, EvilIcons, Ionicons } from '@expo/vector-icons';
 import GameRequirement from '@/components/game-screen/GameRequirement';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import About from '@/components/game-screen/About';
 
 const SMALL_CARD_STYLES = 'w-24 py-6 bg-zinc-700 rounded-md justify-center items-center';
 
@@ -62,17 +63,17 @@ export default function Page() {
                     <View className='px-5 mt-20'>
                         <View className='flex-row justify-center gap-5'>
                             <View className={SMALL_CARD_STYLES}>
-                                <Ionicons color={'#FF4242'} name='star' size={28}/>
+                                <Ionicons color={'#FF4242'} name='star' size={28} />
                                 <ThemedText className='font-bold text-lg'>Ratings</ThemedText>
                                 <ThemedText>4.7 stars</ThemedText>
                             </View>
                             <View className={SMALL_CARD_STYLES}>
-                                <Ionicons color={'#FF4242'} name='download' size={28}/>
+                                <Ionicons color={'#FF4242'} name='download' size={28} />
                                 <ThemedText className='font-bold text-lg'>Downloads</ThemedText>
                                 <ThemedText>8 millions</ThemedText>
                             </View>
                             <View className={SMALL_CARD_STYLES}>
-                                <Ionicons color={'#FF4242'} name='dice' size={28}/>
+                                <Ionicons color={'#FF4242'} name='dice' size={28} />
                                 <ThemedText className='font-bold text-lg'>Category</ThemedText>
                                 <ThemedText>{game.genre}</ThemedText>
                             </View>
@@ -86,14 +87,22 @@ export default function Page() {
                         </View>
 
 
-                        <ThemedText className='mt-10 font-bold text-3xl'>About</ThemedText>
-                        {!seeMore
-                            ? <ThemedText className='text-justify'>{game.short_description}</ThemedText>
-                            : <ThemedText className='text-justify'>{game.description}</ThemedText>}
+                        <ThemedText className='mt-10 mb-2 font-bold text-3xl'>About</ThemedText>
+                        {
+                            !seeMore
+                                ? <View>
+                                    <About game={game} />
+                                    <LinearGradient colors={['transparent', 'transparent', '#1f1f1f']} className='absolute w-full h-full'></LinearGradient>
+                                </View>
+                                : <View>
+                                    <About game={game} />
+                                    <ThemedText className='text-justify'>{game.description}</ThemedText>
+                                </View>
+                        }
 
                         <TouchableOpacity className='flex-row py-2 w-36 mt-2 bg-zinc-700 justify-center items-center rounded-md' onPress={() => setSeeMore(v => !v)}>
                             <ThemedText className='text-lg text-center mb-1 mr-2'>{seeMore ? 'See Less' : 'See More'}</ThemedText>
-                            <AntDesign color={'white'} name={seeMore ? 'left' : 'right'} size={15} />
+                            <AntDesign color={'white'} name={seeMore ? 'up' : 'down'} size={15} />
                         </TouchableOpacity>
 
                         <ThemedText className='mt-10 font-bold text-3xl'>Screenshots</ThemedText>
@@ -110,7 +119,8 @@ export default function Page() {
                             <GameRequirement title='Memory' description={game.minimum_system_requirements.memory} />
                             <GameRequirement title='Graphics' description={game.minimum_system_requirements.graphics} />
                             <GameRequirement title='Storage' description={game.minimum_system_requirements.storage} />
-                        </View>}
+                        </View>
+                        }
                     </View>
 
                     <View className='mb-5'></View>

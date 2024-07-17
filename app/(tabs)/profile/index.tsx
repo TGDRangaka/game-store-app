@@ -13,14 +13,14 @@ export default function Page() {
   return (
     <SafeAreaView className="bg-background flex-1">
       <ThemedView className="mt-3  px-5">
-        <ThemedText className='text-center text-3xl'>My Profile</ThemedText>
+        {/* <ThemedText className='text-center text-3xl'>My Profile</ThemedText> */}
         <View className="items-center mt-5">
           <Image
             source={require('@/assets/images/gta-v.png')}
             className="w-24 h-24 rounded-full border-4 border-red-500"
           />
-          <ThemedText className="text-3xl text-white mt-2">Dr_Shadow</ThemedText>
-          <ThemedText className="text-lg text-red-500">Level 35 Warrior</ThemedText>
+          <ThemedText className="text-3xl text-white mt-2" style={{ fontFamily: 'Audiowide' }}>Dr_Shadow</ThemedText>
+          <ThemedText className="text-lg text-red-400">Level 35 Warrior</ThemedText>
         </View>
 
         <Stats />
@@ -36,33 +36,6 @@ export default function Page() {
         </View>
 
       </ThemedView>
-      {/* <ThemedView className="flex-1 mt-6 p-4">
-        <View className="flex-row justify-between items-center mb-4">
-          <ThemedText className="text-xl text-white">Achievements</ThemedText>
-          <TouchableOpacity className="flex-row items-center">
-            <ThemedText className="text-red-500 mr-2">See All</ThemedText>
-            <Ionicons name="chevron-forward" size={20} color="red" />
-          </TouchableOpacity>
-        </View>
-        <View className="flex-row flex-wrap justify-between">
-          <View className="bg-gray-800 p-4 rounded-lg w-1/2 m-2 items-center">
-            <Ionicons name="trophy" size={40} color="red" />
-            <ThemedText className="text-white mt-2">Top Scorer</ThemedText>
-          </View>
-          <View className="bg-gray-800 p-4 rounded-lg w-1/2 mb-4 items-center">
-            <Ionicons name="star" size={40} color="red" />
-            <ThemedText className="text-white mt-2">MVP</ThemedText>
-          </View>
-          <View className="bg-gray-800 p-4 rounded-lg w-1/2 mb-4 items-center">
-            <Ionicons name="medal" size={40} color="red" />
-            <ThemedText className="text-white mt-2">Champion</ThemedText>
-          </View>
-          <View className="bg-gray-800 p-4 rounded-lg w-1/2 mb-4 items-center">
-            <Ionicons name="game-controller" size={40} color="red" />
-            <ThemedText className="text-white mt-2">Gamer of the Month</ThemedText>
-          </View>
-        </View>
-      </ThemedView> */}
     </SafeAreaView>
   );
 }

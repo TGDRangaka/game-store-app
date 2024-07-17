@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import Login from '@/screens/Login';
 import Register from '@/screens/Register';
 import Loading from '@/screens/Loading';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 
 export default function index() {
@@ -15,9 +14,9 @@ export default function index() {
 
   useEffect(() => {
     setTimeout(() => {
-      if (isLoggedIn) {
-        router.push('/profile');
-      }
+      // if (isLoggedIn) {
+      //   router.push('/profile');
+      // }
       setIsLoading(false);
     }, 1000);
 
