@@ -10,13 +10,13 @@ export default function index() {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isLoginScreen, setIsLoginScreen] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       if (isLoggedIn) {
-        router.push('/(tabs)');
+        router.push('/search');
       }
       setIsLoading(false);
     }, 1000);

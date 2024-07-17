@@ -9,6 +9,7 @@ import axios from 'axios';
 import GameCard from '@/components/GameCard';
 import { AntDesign } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const increaseBy = 40;
 
@@ -20,7 +21,7 @@ export default function Page() {
 
   const getGamesList = async () => {
     try {
-      const response = await axios.get('https://www.freetogame.com/api/games?platform=pc');
+      const response = await axios.get('https://www.freetogame.com/api/games?platform=pc&sort-by=alphabetical');
       if (response.status === 200) {
         setIsLoading(false);
         setAllGames(response.data);
@@ -48,27 +49,29 @@ export default function Page() {
   return isLoading
     ? (<Loading />)
     : (
-      <ThemedView className=''>
-        <ThemedText className='text-2xl mt-10 mx-5'>All Games ({gamesList.length} - {allGames.length})</ThemedText>
-          <LinearGradient colors={['#1f1f1f', 'transparent']} className='absolute mt-16 w-full h-14 z-10' />
+      <SafeAreaView className='bg-background flex-1'>
+        <ThemedView className=''>
+          <ThemedText className='text-2xl mt-4 mx-5'>All Games ({gamesList.length} - {allGames.length}) a-Z</ThemedText>
+          <LinearGradient colors={['#1f1f1f', 'transparent', 'transparent']} className='absolute mt-10 w-full h-14 z-10' />
           <LinearGradient colors={['transparent', '#1f1f1f']} className='absolute bottom-0 w-full h-14 z-10' />
-        <ScrollView className='w-full flex-grow'>
+          <ScrollView className='w-full flex-grow'>
 
-          <View className='mx-5 mt-5'>
-            {
-              gamesList.map((game, i) => <GameCard key={i} game={game} />)
-            }
-          </View>
+            <View className='mx-5 mt-5'>
+              {
+                gamesList.map((game, i) => <GameCard key={i} game={game} />)
+              }
+            </View>
 
-          {(gamesList.length !== allGames.length) &&
-            <TouchableOpacity className='items-center'>
-              <ThemedText className='text-xl bg-gray-600 px-10 py-2 rounded-lg border border-gray-400' onPress={handleMore}>
-                More  <AntDesign name='down' size={18} color='white' />
-              </ThemedText>
-            </TouchableOpacity>}
+            {(gamesList.length !== allGames.length) &&
+              <TouchableOpacity className='items-center'>
+                <ThemedText className='text-xl bg-gray-600 px-10 py-2 rounded-lg border border-gray-400' onPress={handleMore}>
+                  More  <AntDesign name='down' size={18} color='white' />
+                </ThemedText>
+              </TouchableOpacity>}
 
-          <View className='mb-10'></View>
-        </ScrollView>
-      </ThemedView>
+            <View className='mb-10'></View>
+          </ScrollView>
+        </ThemedView>
+      </SafeAreaView>
     )
 }

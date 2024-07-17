@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, SafeAreaView } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { LinearGradient } from 'expo-linear-gradient';
 import HomeCardSlider from '@/components/HomeCardSlider';
@@ -9,6 +9,7 @@ import { Game } from '@/models/Game';
 import Loading from '@/screens/Loading';
 import { Link, useNavigation, useRouter } from 'expo-router';
 import { AntDesign } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Page() {
   const [searchTerm, setSearchTerm] = useState(1);
@@ -55,20 +56,20 @@ export default function Page() {
 
   return (
     <SafeAreaView className='flex-1 bg-background'>
-      <View className='flex-1'>
-        <View className='w-full flex-row justify-between px-5 mt-7'>
-          {/* <Image className='w-14 aspect-square' source={require('@/assets/images/welcome-gif.gif')} /> */}
-          {/* <Image source={require('@/assets/images/search.png')} /> */}
-        </View>
 
-        <ThemedText className='text-2xl ml-5 mb-2'>New Games</ThemedText>
-        <HomeCardSlider />
+      {isLoading
+        ? (
+          <Loading />
+        )
+        : (
+          <View className='flex-1'>
+            <View className='w-full flex-row justify-between px-5'>
+              {/* <Image className='w-14 aspect-square' source={require('@/assets/images/welcome-gif.gif')} /> */}
+              {/* <Image source={require('@/assets/images/search.png')} /> */}
+            </View>
 
-        {isLoading
-          ? (
-            <Loading />
-          )
-          : (
+            <ThemedText className='text-2xl ml-5 mb-2'>New Games</ThemedText>
+            <HomeCardSlider newGames={newGames} />
             <ScrollView className='w-full flex-grow'>
               <View className='flex-row justify-between items-end mx-5 mt-3'>
                 <ThemedText className='text-2xl'>Trending Games</ThemedText>
@@ -83,8 +84,8 @@ export default function Page() {
                 }
               </View>
             </ScrollView>
-          )}
-      </View>
+          </View>
+        )}
 
     </SafeAreaView>
   )

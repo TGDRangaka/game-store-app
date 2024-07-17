@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, ScrollView, SafeAreaView, TouchableOpacity, useWindowDimensions, ToastAndroid } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, useWindowDimensions, ToastAndroid } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useLocalSearchParams } from 'expo-router';
 import Loading from '@/screens/Loading';
@@ -8,6 +8,7 @@ import axios from 'axios';
 import { GameData } from '@/models/GameData';
 import { AntDesign } from '@expo/vector-icons';
 import GameRequirement from '@/components/game-screen/GameRequirement';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const SMALL_CARD_STYLES = 'w-20 py-4 bg-zinc-700 rounded-md justify-center items-center';
 
@@ -33,7 +34,7 @@ export default function Page() {
     }
 
     const handleFavorite = () => {
-        if(!isFavorites) ToastAndroid.show('Added to favorites', ToastAndroid.SHORT);
+        if (!isFavorites) ToastAndroid.show('Added to favorites', ToastAndroid.SHORT);
         setFavorites(!isFavorites);
     }
 
@@ -46,7 +47,7 @@ export default function Page() {
             ? <Loading />
             :
             game &&
-            <SafeAreaView className='flex-1 bg-background pt-8' >
+            <SafeAreaView className='flex-1 bg-background' >
                 <ScrollView className=''>
                     <View className='w-full aspect-video justify-end'>
                         <Image className='w-full h-full rounded-b-3xl' source={{ uri: game.screenshots[0].image }} />
@@ -56,8 +57,6 @@ export default function Page() {
                             <Image className='aspect-square w-20' source={{ uri: game.thumbnail }} />
                             <ThemedText className='rounded-lg -bottom-2 text-3xl w-64 mb-3'>{game.title}</ThemedText>
                         </View>
-
-                        <TouchableOpacity onPress={handleFavorite} className='absolute right-6 top-8'><AntDesign name='heart' size={32} color={isFavorites?'red':'white'} /></TouchableOpacity>
                     </View>
 
                     <View className='px-5 mt-20'>
@@ -79,9 +78,13 @@ export default function Page() {
                             </View>
                         </View>
 
-                        <TouchableOpacity className='mt-5'>
-                            <ThemedText className='rounded-lg bg-red-500 py-2 text-2xl text-white text-center '>Download</ThemedText>
-                        </TouchableOpacity>
+                        <View className='flex-row items-center mt-5 '>
+                            <TouchableOpacity className='flex-grow mr-3'>
+                                <ThemedText className='rounded-lg bg-red-500 py-2 text-2xl text-white text-center'>Download</ThemedText>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={handleFavorite}><AntDesign name='heart' size={40} color={isFavorites ? 'red' : 'white'} /></TouchableOpacity>
+                        </View>
+
 
                         <ThemedText className='mt-10 font-bold text-3xl'>About</ThemedText>
                         {!seeMore
